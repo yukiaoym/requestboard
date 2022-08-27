@@ -1,0 +1,30 @@
+{
+    "variable": {
+        "mainColor": "#3A5BA0",
+        "subColor": "#f8f8f8",
+	    "headerSubColor": "#172b4d",
+        "pointColor": "#F1D00A",
+        "pointColor_g": "#D1D1D1",
+        "columnColor": "#ECECEC",
+        "cardColor": "#FFF",
+        "textColor": "#172b4d",
+        "textColor_w": "#fff",
+        "textSize": "1.4rem",
+        "textSizeMini": "1.2rem",
+        "textSizeBig": "1.6rem",
+        "textSizeTitle": "2.0rem",
+        "boxShadow": "0 2px 2px 0 rgba(0, 0, 0, .2)",
+        "boxShadowBig": "2px 4px 4px 4px rgba(0, 0, 0, .2)"
+    },
+    "ProductColor": {
+        "Product1": "#82BB48",
+        "Product2": "#B71F22",
+        "Product3": "#14568F",
+        "Product4": "#864191"
+    },
+    "Hostname": "http://board.yksample.com",
+    "User": {
+        "username": "tech_cs",
+        "password": "318!!!!Sol"
+    }
+}
