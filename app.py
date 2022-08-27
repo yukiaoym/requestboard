@@ -26,8 +26,7 @@ CORS(app, origins=["http://localhost:3000", "http://172.21.1.56:3000"])
 def ConnectDB():
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('pass')
-    client = MongoClient('mongodb://%s:%s@172.20.43.181/board' % (username, password))
-    # client = MongoClient('mongodb://%s:%s@localhost:28001/board' % (username, password))   
+    client = MongoClient('mongodb://%s:%s@localhost:28001/board' % (username, password))   
     return client
 
 def GetDB():
@@ -277,5 +276,4 @@ def search_card():
 
 if __name__ == '__main__':
     app.debug = False
-    app.run(host='172.20.43.181',  port=8081)
-    #app.run(host='127.0.0.1',  port=8081)
+    app.run(host='127.0.0.1',  port=8081)
