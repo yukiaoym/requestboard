@@ -129,10 +129,10 @@ export default function Header() {
 				</Title>
 				<Nav>
 					<Menu >
-						<li onClick={ShowForm}>
+						{/* <li onClick={ShowForm}>
 							<PostIcon fill={variavle.headerSubColor} />
 							<span>新規要望の投稿</span>
-						</li>
+						</li> */}
 						<li onClick={ShowInfo}>
 							<InfoIcon fill={variavle.headerSubColor} />
 							<span>お知らせ</span>
@@ -142,10 +142,10 @@ export default function Header() {
 							<span>更新情報</span>
 						</li>
 					</Menu>
-					<Switch userid={zendesk_userid} usermode={usermode}>
+					{/* <Switch userid={zendesk_userid} usermode={usermode}>
 						<li onClick={() => setUserMode(false)}>管理者モード</li>
 						<li onClick={() => setUserMode(true)}>ユーザモード</li>
-					</Switch>
+					</Switch> */}
 				</Nav>
 			</Container>
         </HeaderArea> 

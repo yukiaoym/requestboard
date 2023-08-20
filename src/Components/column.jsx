@@ -72,6 +72,7 @@ const Menu = styled.div`
 
     & ul {
         display: inline-block;
+        width: 110px;
     }
     & ul li {
         padding: 10px;

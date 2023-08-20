@@ -6,14 +6,15 @@ import urllib.parse
 from bson.json_util import dumps
 from datetime import datetime
 from flask_httpauth import HTTPBasicAuth
+import ssl
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret key here'
 auth = HTTPBasicAuth()
 
-users = {
-    "tech_cs": "318!!!!Sol"
-}
+# users = {
+#     "tech_cs": "318!!!!Sol"
+# }
 
 @auth.get_password
 def get_pw(username):
@@ -21,12 +22,12 @@ def get_pw(username):
         return users.get(username)
     return None
 
-CORS(app, origins=["http://localhost:3000", "http://172.21.1.56:3000"])
+CORS(app, origins=["http://localhost:3000", "http://172.21.1.56:3000", "https://requestboard.vercel.app"])
 
 def ConnectDB():
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('pass')
-    client = MongoClient('mongodb://%s:%s@localhost:28001/board' % (username, password))   
+    client = MongoClient('mongodb://%s:%s@localhost:27017/board' % (username, password))   
     return client
 
 def GetDB():
@@ -196,79 +197,79 @@ def searchCard(data):
 
 
 @app.route('/')
-@auth.login_required
+# @auth.login_required
 def index():
     return "Hello, %s!" % auth.username()
 
 @app.route('/getCards', methods=["GET"])
-@auth.login_required
+# @auth.login_required
 def get_cards():
     data = GetDB()
     return data
 
 @app.route('/updateColOrder', methods=["POST"])
-@auth.login_required
+# @auth.login_required
 def update_colorder():
     data = request.json
     UpdateColOrder(data)
     return 'OK'
 
 @app.route('/updateCardOrder', methods=["POST"])
-@auth.login_required
+# @auth.login_required
 def update_cardorder():
     data = request.json
     UpdateCardOrder(data)
     return 'OK'
 
 @app.route('/updateGoodCount', methods=["POST"])
-@auth.login_required
+# @auth.login_required
 def update_goodcount():
     data = request.json
     result = updateGoodCount(data)
     return result
 
 @app.route('/addCard', methods=["POST"])
-@auth.login_required
+# @auth.login_required
 def add_card():
     data = request.json
     result = addCard(data)
     return result
 
 @app.route('/delCard/<cardid>', methods=["GET"])
-@auth.login_required
+# @auth.login_required
 def del_card(cardid):
     result = delCard(cardid)
     return result
 
 @app.route('/updateCard', methods=["POST"])
-@auth.login_required
+# @auth.login_required
 def update_card():
     data = request.json
     result = updateCard(data)
     return result
 
 @app.route('/addColumn', methods=["GET"])
-@auth.login_required
+# @auth.login_required
 def add_column():
     result = addColumn()
     return result
 
 @app.route('/delColumn', methods=["POST"])
-@auth.login_required
+# @auth.login_required
 def del_column():
     data = request.json
     result = delColumn(data)
     return result
 
 @app.route('/updateColumn', methods=["POST"])
-@auth.login_required
+# @auth.login_required
 def update_column():
     data = request.json
     result = updateColumn(data)
     return result
 
 @app.route('/searchCard', methods=["POST"])
-@auth.login_required
+# @auth.login_required
 def search_card():
     data = request.json
     result = searchCard(data)
@@ -276,4 +277,18 @@ def search_card():
 
 if __name__ == '__main__':
     app.debug = False
-    app.run(host='127.0.0.1',  port=8081)
+    #app.run(host='127.0.0.1',  port=8081)
+    #app.run(host='133.167.32.165',  port=8081)
+
+    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+    ssl_context.load_cert_chain(
+        '/etc/pki/tls/certs/server.crt', '/etc/pki/tls/private/server.key'
+    )
+    app.run(ssl_context=ssl_context, host='0.0.0.0',  port=8081, threaded=True)
+
+
+
+
+
+
+
