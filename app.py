@@ -22,7 +22,7 @@ def get_pw(username):
         return users.get(username)
     return None
 
-CORS(app, origins=["http://localhost:3000", "http://172.21.1.56:3000", "https://requestboard.vercel.app"])
+CORS(app, origins=["http://localhost:3000", "http://172.21.1.56:3000", "https://requestboard.vercel.app", "http://requestboard.vercel.app"])
 
 def ConnectDB():
     username = urllib.parse.quote_plus('admin')
