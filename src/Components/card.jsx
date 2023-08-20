@@ -24,7 +24,6 @@ const Container = styled.div`
 		font-size: ${variavle.textSize};
         line-height: 2.1rem;
 		margin: 12px 0;
-        cursor: default;
 	}
 `;
 
