@@ -282,9 +282,10 @@ if __name__ == '__main__':
 
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
     ssl_context.load_cert_chain(
-        '/etc/pki/tls/certs/server.crt', '/etc/pki/tls/private/server.key'
+        '/etc/letsencrypt/live/os3-354-10161.vs.sakura.ne.jp/fullchain.pem',
+        '/etc/letsencrypt/live/os3-354-10161.vs.sakura.ne.jp/privkey.pem'
     )
-    app.run(ssl_context=ssl_context, host='0.0.0.0',  port=8081, threaded=True)
+    app.run(ssl_context=ssl_context, host='os3-354-10161.vs.sakura.ne.jp',  port=8081, threaded=True)
 
 
 
