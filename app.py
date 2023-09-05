@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from flask import Flask, render_template, url_for, request, redirect
 from flask_cors import CORS
 import requests
@@ -12,17 +14,13 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret key here'
 auth = HTTPBasicAuth()
 
-# users = {
-#     "tech_cs": "318!!!!Sol"
-# }
-
 @auth.get_password
 def get_pw(username):
     if username in users:
         return users.get(username)
     return None
 
-CORS(app, origins=["http://localhost:3000", "http://172.21.1.56:3000", "https://requestboard.vercel.app", "http://requestboard.vercel.app"])
+CORS(app, origins=["http://localhost:3000", "https://requestboard.vercel.app", "http://requestboard.vercel.app"])
 
 def ConnectDB():
     username = urllib.parse.quote_plus('admin')
